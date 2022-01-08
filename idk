@@ -1,0 +1,151 @@
+-- Vault is daddy ngl
+-- Leaked everywhere by Maxy
+-- Machport is a gaming gamer ong
+-- Enjoy the script skids :)
+local GetService = setmetatable({}, {
+    __index = function(self, key)
+        return game:GetService(key)
+    end
+})
+
+local Library = loadstring(game:HttpGet("https://gist.githubusercontent.com/VaultGitos/87b2dc20ef97aaab08664d7b32d28125/raw/ff670b9cc91e4f3650fe7f620e164795d2bd9719/cattoware.lua"))()
+local NotifyLibrary = loadstring(game:HttpGet("https://raw.githubusercontent.com/Kinlei/Dynissimo/main/Scripts/AkaliNotif.lua"))()
+local Notify = NotifyLibrary.Notify
+Library.theme.accentcolor = Color3.new(0.60641, 0.0114134, 1)
+
+local RunService = GetService.RunService
+local Players = GetService.Players
+local LocalPlayer = Players.LocalPlayer
+local Mouse = LocalPlayer:GetMouse()
+local CurrentCamera = workspace.CurrentCamera
+local UserInputService = GetService.UserInputService
+local GuiInset = GetService.GuiService:GetGuiInset()
+local AimbotFOV = Drawing.new("Circle")
+AimbotFOV.Thickness = 1
+local SilentAimFOV = Drawing.new("Circle")
+SilentAimFOV.Thickness = 1
+local Insert = table.insert
+local Network = GetService.NetworkClient
+local PuppywareFolder = Instance.new("Folder", workspace)
+PuppywareFolder.Name = "PuppyWare-Folder"
+local StarterGui = GetService.StarterGui
+local ReplicatedStorage = GetService.ReplicatedStorage
+local PuppywareSettings = {
+    bootykids = {
+        nbooty = {
+            Enabled = true,
+            AimAssist = true,
+            IsAiming = true,
+            ShowFOV = true,
+            FOVColor = Color3.new(0.603921, 0.011764, 1),
+            UseNearestDistance = false,
+            WallCheck = false,
+            KnockedOutCheck = false,
+            GrabbedCheck = false,
+            Hitboxes = {"Head"}
+        },
+        TriggerBot = {
+            Enabled = false,
+            Delay = false,
+            DelayAmount = 0
+        },
+        SilentAim = {
+            Enabled = false,
+            ShowFOV = false,
+            FOVColor = Color3.new(0.603921, 0.011764, 1),
+            WallCheck = false,
+            KnockedOutCheck = false,
+            UseNearestDistance = false,
+            GrabbedCheck = false,
+            Hitboxes = {"Head"}
+        },
+        TargetAim = {
+            Enabled = false,
+            ShowFOV = false,
+            FOVColor = Color3.new(0.603921, 0.011764, 1),
+            WallCheck = false,
+            KnockedOutCheck = false,
+            UseNearestDistance = false,
+            GrabbedCheck = false,
+            Hitboxes = {"Head"},
+            Target = nil
+        },
+        bootykidsSettings = {
+            MovementPrediction = false,
+            MovementPredictionAmount = 0.165 * 1,
+            HitChance = false,
+            HitChanceAmount = {
+                HitPercent = 100,
+                NotHitPercent = 0
+            },
+            AimAssistType = "Camera",
+            MovementPrediction = false,
+            MovementPredictionAmount = 0.165 * 1,
+            SmoothingTracing = false,
+            SmoothingTracingAmount = 5,
+            PingBasedPrediction = false,
+            GetVelocity = 0.165
+        },
+        TargetAimSettings = {
+            UnlockTargetKnocked = false,
+            NotificationAlert = false,
+        },
+        FOV = {
+            FOVFilled = false,
+            AimAssistSize = 100,
+            SilentAimSize = 100,
+            TargetAimSize = 100       }
+    }
+}
+
+
+local Window = Library:CreateWindow("@fortnitegodkingcool", Vector2.new(494, 593), Enum.KeyCode.RightShift)
+local bootykidsTab = Window:CreateTab("bootykids")
+
+local LegitSection = bootykidsTab:CreateSector("nbooty", "left")
+LegitSection:AddToggle('Enabled', false, function(Boolean)
+    PuppywareSettings.bootykidsTab.nbooty.Enabled = Boolean
+end)
+local AimAssistToggle = LegitSection:AddToggle('Aim Assist', false, function(Boolean)
+    PuppywareSettings.bootykids.nbooty.AimAssist = Boolean
+end)
+AimAssistToggle:AddKeybind(E)
+
+local nbootyFOVToggle = LegitSection:AddToggle('Show FOV', false, function(Boolean)
+    PuppywareSettings.bootykids.nbooty.ShowFOV = Boolean
+end)
+local LegitSection = bootykidsTab:CreateSector("fly", "left")
+LegitSection:AddToggle('off/on', false, function(Boolean)
+    PuppywareSettings.bootykidsTab.fly.Enabled = Boolean
+end)
+local hacktoggle = LegitSection:AddToggle('hack', false, function(Boolean)
+    PuppywareSettings.bootykids.fly.hack = Boolean
+end)
+hacktoggle:AddKeybind()
+local LegitSection = bootykidsTab:CreateSector("rage", "left")
+LegitSection:AddToggle('spin', false, function(Boolean)
+    PuppywareSettings.bootykidsTab.rage.Enabled = Boolean
+end)
+local LegitSection = bootykidsTab:CreateSector("Tp", "left")
+LegitSection:AddDropdown('Tps', {"bank", "store"}, {"friends"}, true, function(Value)
+    PuppywareSettings.bootykids.Tp.Hitboxes = Value
+end)
+
+
+local cheatsTab = Window:CreateTab("close  / right shift")
+
+local SettingsTab = Window:CreateTab("Settings")
+
+if syn then
+    SettingsTab:CreateConfigSystem("left")
+else
+    Notify({
+        Title = "da hood",
+        Description = "Your Executor Doesn't Support Config.",
+        Duration = 3
+    })
+end
+
+
+
+
